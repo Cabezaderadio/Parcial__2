@@ -214,7 +214,6 @@ y = [0 2 2];
 my_lagrange_Bryan_Silva(x, y)
 
 
-
 function [A,B] = my_lsline_Bryan_Silva(x,y)
 
     xk = sum(x)
@@ -234,5 +233,10 @@ function [A,B] = my_lsline_Bryan_Silva(x,y)
     disp(['A = ', num2str(A)]);
     disp(['B = ', num2str(B)]);
     disp(['y = ', num2str(A), 'x + ', num2str(B)]);
+
+    fun = @(x) A * x + B;
+
+    E = sqrt (sum((fun(x) - y).^2) / length(x))
+    
     
 end
