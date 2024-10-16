@@ -212,3 +212,27 @@ end
 x = [0 0 1];
 y = [0 2 2]; 
 my_lagrange_Bryan_Silva(x, y)
+
+
+
+function [A,B] = my_lsline_Bryan_Silva(x,y)
+
+    xk = sum(x)
+    yk = sum(y)
+    xk2 = sum(x.^2)
+    xkyk = sum(x .* y)
+
+    A1 = [xk2  xk ; xk length(x)];
+    B1 = [xkyk ; yk];
+
+    % Resolver el sistema de ecuaciones
+    X = A1 \ B1;
+
+    % Mostrar los resultados
+    A = X(1);
+    B = X(2);
+    disp(['A = ', num2str(A)]);
+    disp(['B = ', num2str(B)]);
+    disp(['y = ', num2str(A), 'x + ', num2str(B)]);
+    
+end
